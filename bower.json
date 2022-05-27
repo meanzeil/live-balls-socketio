@@ -9,6 +9,7 @@
   "homepage": "https://github.com/meanzeil/live-balls-socketio",
   "dependencies": {
     "angular": "^1.8.3",
-    "semantic": "2.3.0"
+    "semantic": "2.3.0",
+    "jquery": "^3.6.0"
   }
 }
