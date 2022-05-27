@@ -1,6 +1,7 @@
 app.controller('indexController', ['$scope','indexFactory',($scope, indexFactory)=>{
 
     $scope.messages = [];
+    $scope.players = {};
 
     $scope.init = () =>{
         const username = prompt('Lütfen Kullanıcı Adınızı Girin');
@@ -21,6 +22,11 @@ app.controller('indexController', ['$scope','indexFactory',($scope, indexFactory
         indexFactory.connectSocket('http://localhost:3000', connectionOptions)
             .then((socket)=>{
                 socket.emit('newUser', { username });
+                
+                socket.on('initPLayers',(players)=>{
+                    $scope.players = players;
+                    $scope.$apply();
+                })
 
                 socket.on('newUser',(data)=>{
                     const messageData = {
